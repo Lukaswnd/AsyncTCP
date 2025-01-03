@@ -170,8 +170,6 @@ class AsyncClient {
     uint16_t _connect_port;
 
     int8_t _close();
-    void _free_closed_slot();
-    void _allocate_closed_slot();
     int8_t _connected(void* pcb, int8_t err);
     void _error(int8_t err);
     int8_t _poll(tcp_pcb* pcb);
@@ -179,6 +177,9 @@ class AsyncClient {
     int8_t _fin(tcp_pcb* pcb, int8_t err);
     int8_t _lwip_fin(tcp_pcb* pcb, int8_t err);
     void _dns_found(struct ip_addr *ipaddr);
+
+    void _allocate_closed_slot();
+    void _free_closed_slot();
 
   public:
     AsyncClient* prev;
